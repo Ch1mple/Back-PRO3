@@ -1,0 +1,144 @@
+[
+  {
+    "id": "dcdd0fad-a94c-4810-8acc-5f108d3b18c3",
+    "title": "event...",
+    "description": "we will make a ....",
+    "label": "hot",
+    "price": 10,
+    "date": "2025-10-02",
+    "location": "CC Arenas",
+    "latitude": 28.12825,
+    "longitude": -15.44855,
+    "poster": "http://www.eurocollection.co.uk/Euros/Thumbs/Andorra/Andorra%202015%201c.JPG",
+    "category": [
+      "Game Boards",
+      "Food"
+    ],
+    "user_uid": "aB1FNMJV5OOOex6jhLJADZJ6VKF3"
+  },
+  {
+    "id": "dcdd0fad-a94c-4810-8acc-5f108d3b18c4",
+    "title": "event...",
+    "description": "we will make a ....",
+    "label": "hot",
+    "price": 20,
+    "date": "2025-10-01",
+    "location": "CC Alisios",
+    "latitude": 10.3751,
+    "longitude": 1.1496,
+    "poster": "https://i.ebayimg.com/images/g/4goAAOSwMyBe7hnQ/s-l1200.webp",
+    "category": [
+      "Game Boards",
+      "Food"
+    ],
+    "user_uid": "aB1FNMJV5OOOex6jhLJADZJ6VKF3"
+  },
+  {
+    "id": "dcdd0fad-a94c-4810-8acc-5f108d3b18c8",
+    "title": "post event",
+    "description": "we will make a ....",
+    "label": "hot",
+    "price": 0,
+    "date": "2025-10-03",
+    "location": "CC Arenas",
+    "latitude": 28.12825,
+    "longitude": -15.44855,
+    "poster": "https://example.com/event-poster.jpg",
+    "category": [
+      "Game Boards",
+      "Food"
+    ],
+    "user_uid": "aB1FNMJV5OOOex6jhLJADZJ6VKF3"
+  },
+  {
+    "id": "ef54e5c8-f3d1-441b-bbc8-31d5118d0f67",
+    "title": "post id event",
+    "description": "we will make a ....",
+    "label": "empty",
+    "price": 0,
+    "date": "2025-10-05",
+    "location": "CC Arenas",
+    "latitude": 28.12825,
+    "longitude": -15.44855,
+    "poster": "https://example.com/event-poster.jpg",
+    "category": [
+      "Game Boards",
+      "Food"
+    ],
+    "user_uid": "koHWukPoUpYty3tFQE5G6RuN97e1"
+  },
+  {
+    "id": "11485529-67b4-4b7f-94c4-268ee62f3472",
+    "title": "from re",
+    "description": "gdfgfdgf",
+    "label": "hot",
+    "price": 15,
+    "date": "2025-01-01",
+    "location": "here",
+    "latitude": 41.3751,
+    "longitude": 2.1496,
+    "poster": "gfdgdfg",
+    "category": [
+      "Game Boards",
+      "Sports"
+    ],
+    "user_uid": "koHWukPoUpYty3tFQE5G6RuN97e1"
+  },
+  {
+    "id": "1bab6cef-9d09-402a-b218-4bb5e6b68c94",
+    "title": "ffff",
+    "description": "fgf",
+    "label": "empty",
+    "price": 10,
+    "date": "2025-11-02",
+    "location": "ff",
+    "poster": "f",
+    "category": [
+      "Art"
+    ],
+    "user_uid": "koHWukPoUpYty3tFQE5G6RuN97e1"
+  },
+  {
+    "id": "e80e1d2f-4df5-457b-8f7f-a08db7235b3d",
+    "title": "a",
+    "description": "aa",
+    "label": "empty",
+    "price": 10,
+    "date": "2026-10-02",
+    "location": "a",
+    "poster": "a",
+    "category": [
+      "Art"
+    ],
+    "user_uid": "koHWukPoUpYty3tFQE5G6RuN9rw1"
+  },
+  {
+    "id": "b9857b35-4315-45e9-9467-78a843dc9a9a",
+    "title": "b",
+    "description": "b",
+    "label": "empty",
+    "price": 20,
+    "date": "2025-12-02",
+    "location": "b",
+    "poster": "b",
+    "category": [
+      "Game Boards"
+    ],
+    "user_uid": "koHWukPoUpYty3tFQE5G6RuN9rw1"
+  },
+  {
+    "id": "3b993a02-c892-419c-870c-11a116f74e71",
+    "title": "new post from profile ",
+    "description": "created",
+    "date": "2025-09-25",
+    "location": "Centro Comercial Los Alisios, Hermanos Domínguez Santana, La Suerte, Tamaraceite, Las Palmas de Gran Canaria, Las Palmas, Canarias, 35018, España",
+    "poster": "a",
+    "category": [
+      "Sports"
+    ],
+    "user_uid": "aB1FNMJV5OOOex6jhLJADZJ6VKF3",
+    "price": 0,
+    "latitude": 28.0949979,
+    "longitude": -15.475311
+  }
+]
