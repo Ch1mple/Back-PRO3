@@ -1,0 +1,71 @@
+[
+  {
+    "user_id": 5,
+    "user_uid": "aB1FNMJV5OOOex6jhLJADZJ6VKF3",
+    "username": "Infecar",
+    "description": "Ferias y Eventos Gran Canaria",
+    "type": "normal",
+    "socialLinks": 
+    {
+      "instagram": "https://instagram.com/john_shopper",
+      "twitter": "https://twitter.com/john_shopper",
+      "email": "john.doe@example.com"
+    },
+    "img_url": "https://i.ibb.co/v6BqKhmG/infecar.jpg",
+    "password": "hashed_password_1",
+    "location": {
+      "country": "España",
+      "region": "Las Palmas",
+      "island": "Gran Canaria",
+      "city": "Las Palmas de Gran Canaria",
+      "country_img": "https://flagsapi.com/ES/shiny/64.png"
+    },
+    "created_at": "2025-02-18T10:00:00Z"
+  },
+  {
+    "user_id": 5,
+    "user_uid": "aB2FNMJV5OOOex6jhLJADZJ6VKJ1",
+    "username": "Gran Canaria Turismo",
+    "description": "Eventos en Gran Canaria #MuchoPorVivir",
+    "type": "normal",
+    "socialLinks": 
+    {
+      "instagram": "https://instagram.com/john_shopper",
+      "twitter": "https://twitter.com/john_shopper",
+      "email": "john.doe@example.com"
+    },
+    "img_url": "https://i.ibb.co/rRygN4Kk/turismogc.jpg",
+    "password": "hashed_password_1",
+    "location": {
+      "country": "United States",
+      "region": "California",
+      "island": "",
+      "city": "Los Angeles",
+      "country_img": "https://flagsapi.com/US/shiny/64.png"
+    },
+    "created_at": "2025-02-18T10:00:00Z"
+  },
+  {
+    "user_id": 6,
+    "user_uid": "aB2FNMJV5OOOex6jhLJADZJ6VKJ2",
+    "username": "LPA Juventud",
+    "description": "Oficina dedel Ayuntamiento de Las Palmas de Gran Canaria",
+    "type": "normal",
+    "socialLinks": 
+    {
+      "instagram": "https://instagram.com/john_shopper",
+      "twitter": "https://twitter.com/john_shopper",
+      "email": "john.doe@example.com"
+    },
+    "img_url": "https://i.ibb.co/NgRNg1qD/hq720.jpg",
+    "password": "hashed_password_1",
+    "location": {
+      "country": "United States",
+      "region": "California",
+      "island": "",
+      "city": "Los Angeles",
+      "country_img": "https://flagsapi.com/US/shiny/64.png"
+    },
+    "created_at": "2025-02-18T10:00:00Z"
+  }
+]

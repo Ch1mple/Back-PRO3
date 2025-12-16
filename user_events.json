@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "user_uid": "aB1FNMJV5OOOex6jhLJADZJ6VKF3",
+    "event_id": "dcdd0fad-a94c-4810-8acc-5f108d3b18c3",
+    "registered_at": "2025-09-24T14:20:00Z",
+    "status": "registered"
+  },
+  {
+    "id": 2,
+    "user_uid": "aB1FNMJV5OOOex6jhLJADZJ6VKF5",
+    "event_id": "dcdd0fad-a94c-4810-8acc-5f108d3b18c3",
+    "registered_at": "2025-09-25T10:00:00Z",
+    "status": "registered"
+  },
+  {
+    "id": 1,
+    "user_uid": "aB1FNMJV5OOOex6jhLJADZJ6VKF3",
+    "event_id": "dcdd0fad-a94c-4810-8acc-5f108d3b18c3",
+    "registered_at": "2025-09-24T14:20:00Z",
+    "status": "registered"
+  },
+  {
+    "id": 2,
+    "user_uid": "aB1FNMJV5OOOex6jhLJADZJ6VKF5",
+    "event_id": "dcdd0fad-a94c-4810-8acc-5f108d3b18c3",
+    "registered_at": "2025-09-25T10:00:00Z",
+    "status": "registered"
+  }
+
+
+]
