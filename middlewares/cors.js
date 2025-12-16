@@ -6,7 +6,8 @@ const ACCEPTED_ORIGINS = [
   'http://localhost:1234',
   'http://localhost:5173',
   'http://localhost:8081',
-  'https://back-pro3.onrender.com'
+  'https://back-pro3.onrender.com',
+  'https://front-pro-3-mp4vo0n6n-ch1mples-projects-2f2961be.vercel.app'
 ]
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
