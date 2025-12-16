@@ -1,5 +1,7 @@
 //import { validateBackpack, validatePartialBackpack } from '../schemas/backpacks.js'
 
+// Controlador para manejar las rutas de nuestra bbdd
+
 export class BackpackController {
   constructor ({ backpackModel }) {
     this.backpackModel = backpackModel
@@ -23,7 +25,7 @@ export class BackpackController {
   }
 
   postEvent = async (req, res) => {
-  const event = req.body; // now we take the whole body as the event object
+  const event = req.body; 
   if (!event) {
     return res.status(400).json({ message: 'Event is required.' });
   }

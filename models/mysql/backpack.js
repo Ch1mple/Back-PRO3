@@ -1,5 +1,8 @@
 import mysql from 'mysql2/promise'
+import { randomUUID } from 'crypto'
 
+// Modelo para manejar la lógica de datos con MySQL 
+// Implementado pero sin uso para ahorrar recursos y tiempo
 const DEFAULT_CONFIG = {
   host: 'localhost',
   user: 'root',
@@ -12,116 +15,114 @@ const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 const connection = await mysql.createConnection(connectionString)
 
 export class BackpackModel {
-  static async getAll () {
-    console.log('getAll')
 
-    const [cards] = await connection.query(
-      'SELECT * FROM cards;'
+  static async getSeachUserByUsername (search) {
+    if (!search) return []
+    const like = `%${search.toLowerCase()}%`
+    const [rows] = await connection.query(
+      'SELECT * FROM users WHERE LOWER(username) LIKE ?;',
+      [like]
     )
-
-    return cards
+    return rows
   }
 
-  static async getById ({ id }) {
-    const [cards] = await connection.query(
-      `SELECT * FROM cards WHERE id = ?;`,
+  static async getEventdByTitle (search) {
+    if (!search) return []
+    const like = `%${search.toLowerCase()}%`
+    const [rows] = await connection.query(
+      'SELECT * FROM events WHERE LOWER(title) LIKE ?;',
+      [like]
+    )
+    return rows
+  }
+
+  static async getEvents () {
+    const [rows] = await connection.query('SELECT * FROM events;')
+    return rows
+  }
+
+  static async getEventsById ({ id }) {
+    const [rows] = await connection.query(
+      'SELECT * FROM events WHERE id = ?;',
       [id]
     )
-
-    if (cards.length === 0) return null
-
-    return cards[0]
+    if (rows.length === 0) return null
+    return rows[0]
   }
 
-  static async create ({ input }) {
-    const {
-      name,
-      type,
-      rarity,
-      expansion,
-      year,
-      status,
-      image_url
-    } = input
+  static async postEvent ({ event }) {
+    if (!event) throw new Error('Event is required')
+    const id = event.id ?? randomUUID()
+    const title = event.title ?? null
+    const user_uid = event.user_uid ?? null
+    const data = JSON.stringify(event)
 
     try {
       await connection.query(
-        `INSERT INTO cards (name, type, rarity, expansion, year, status, image_url)
-          VALUES (?, ?, ?, ?, ?, ?, ?);`,
-        [name, type, rarity, expansion, year, status, image_url]
+        'INSERT INTO events (id, title, user_uid, data) VALUES (?, ?, ?, ?);',
+        [id, title, user_uid, data]
       )
     } catch (e) {
-      throw new Error('Error creating card')
+      throw new Error('Error creating event')
     }
 
-    const [cards] = await connection.query(
-      `SELECT * FROM cards WHERE name = ? AND type = ? AND rarity = ? AND expansion = ? AND year = ? AND status = ? AND image_url = ?;`,
-      [name, type, rarity, expansion, year, status, image_url]
-    )
-
-    return cards[0]
-  }
-
-  static async delete ({ id }) {
-    const [result] = await connection.query(
-      'DELETE FROM cards WHERE id = ?;',
-      [id]
-    )
-    return result.affectedRows > 0
-  }
-
-  static async update ({ id, input }) {
-    const fields = Object.keys(input).map(key => `${key} = ?`).join(', ')
-    const values = Object.values(input)
-    values.push(id)
-
-    const [result] = await connection.query(
-      `UPDATE cards SET ${fields} WHERE id = ?;`,
-      values
-    )
-    if (result.affectedRows === 0) return false
-
-    const [cards] = await connection.query(
-      `SELECT * FROM cards WHERE id = ?;`,
-      [id]
-    )
-    return cards[0]
-  }
-
-  static async getAllTrades () {
-    const [trades] = await connection.query('SELECT * FROM trades;')
-    return trades
-  }
-
-  static async getSentTradesByUserId ({ userId }) {
-    const [trades] = await connection.query(
-      'SELECT * FROM trades WHERE sender_id = ?;',
-      [userId]
-    )
-    return trades
-  }
-
-  static async getReceivedTradesByUserId ({ userId }) {
-    const [trades] = await connection.query(
-      'SELECT * FROM trades WHERE receiver_id = ?;',
-      [userId]
-    )
-    return trades
+    const [rows] = await connection.query('SELECT * FROM events WHERE id = ?;', [id])
+    return rows[0]
   }
 
   static async getAllUsers () {
-    const [users] = await connection.query('SELECT * FROM users;')
-    return users
+    const [rows] = await connection.query('SELECT * FROM users;')
+    return rows
   }
 
   static async getUserByUserUid ({ user_uid }) {
-    const [users] = await connection.query(
+    const [rows] = await connection.query(
       'SELECT * FROM users WHERE user_uid = ?;',
       [user_uid]
     )
-
-    if (users.length === 0) return null
-
-    return users[0]
+    if (rows.length === 0) return null
+    return rows[0]
   }
+  
+  static async getEventsByUserUid ({ user_uid }) {
+    const [rows] = await connection.query(
+      'SELECT * FROM events WHERE user_uid = ?;',
+      [user_uid]
+    )
+    return rows
+  }
+
+  static async getUserLinksByUserUid ({ user_uid }) {
+    const [rows] = await connection.query(
+      'SELECT * FROM user_links WHERE user_uid = ?;',
+      [user_uid]
+    )
+    return rows
+  }
+
+  static async getUserLinksById ({ id }) {
+    const [rows] = await connection.query(
+      'SELECT * FROM user_links WHERE id = ?;',
+      [id]
+    )
+    if (rows.length === 0) return null
+    return rows[0]
+  }
+
+  static async getUserEventsByUserUid ({ user_uid }) {
+    const [rows] = await connection.query(
+      'SELECT * FROM user_events WHERE user_uid = ?;',
+      [user_uid]
+    )
+    return rows
+  }
+
+  static async getUserEventsById ({ id }) {
+    const [rows] = await connection.query(
+      'SELECT * FROM user_events WHERE event_id = ?;',
+      [id]
+    )
+    return rows
+  }
+
 }

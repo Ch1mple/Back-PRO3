@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { BackpackController } from '../controllers/backpack.js'
 
+// Rutas para manejar las peticiones desde el front
 export const createBackpackRouter = ({ backpackModel, userModel }) => {
   const backpackRouter = Router()
 

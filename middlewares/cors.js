@@ -1,5 +1,6 @@
 import cors from 'cors'
 
+// Middleware CORS: permite solicitudes desde orígenes autorizados para prevenir llamadas no deseadas
 const ACCEPTED_ORIGINS = [
   'http://localhost:8080',
   'http://localhost:1234',
@@ -9,7 +10,9 @@ const ACCEPTED_ORIGINS = [
 ]
 
 export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
+  // Valida el origen de la petición
   origin: (origin, callback) => {
+    // Origen permitido
     if (acceptedOrigins.includes(origin)) {
       return callback(null, true)
     }

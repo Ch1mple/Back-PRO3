@@ -10,7 +10,7 @@ const requestLogger = (req, res, next) => {
   next()
 }
 
-// Middleware para loguear conexiones rechazadas
+// Middleware para loguear conexiones rechazadas (usado para debug)
 const rejectionLogger = (err, req, res, next) => {
   const ip = req.ip || req.connection.remoteAddress
   console.error(`[${new Date().toISOString()}] ❌ Conexión rechazada - IP: ${ip} - Error: ${err.message}`)
@@ -26,7 +26,6 @@ export const createApp = ({ backpackModel }) => {
 
   app.use('/backpack', createBackpackRouter({ backpackModel }))
 
-  // Middleware de error al final
   app.use(rejectionLogger)
 
   const PORT = process.env.PORT ?? 1234
