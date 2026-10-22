@@ -5,12 +5,16 @@ CREATE DATABASE backpack;
 USE backpack;
 
 CREATE TABLE users (
+    user_id INT NOT NULL AUTO_INCREMENT UNIQUE,
+    user_uid VARCHAR(255) NOT NULL UNIQUE DEFAULT (UUID()),
     uuid CHAR(36) NOT NULL UNIQUE DEFAULT (UUID()) PRIMARY KEY,
     uuid_firebase VARCHAR(255) NOT NULL,
     username VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    description TEXT,
+    type VARCHAR(50) NOT NULL DEFAULT 'normal',
+    email VARCHAR(100),
     img_url VARCHAR(255),
-    password VARCHAR(255) NOT NULL,
+    password VARCHAR(255),
     wants JSON,
     offers JSON,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -38,6 +42,15 @@ CREATE TABLE trades (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sender_id) REFERENCES users(uuid),
     FOREIGN KEY (receiver_id) REFERENCES users(uuid)
+);
+
+CREATE TABLE solicitudes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    titulo VARCHAR(255) NOT NULL,
+    descripcion TEXT NOT NULL,
+    fecha_solicitud TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    estado ENUM('pendiente', 'aceptada', 'cancelada') NOT NULL DEFAULT 'pendiente'
 );
 
 -- Insert statements for the users table

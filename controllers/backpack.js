@@ -36,11 +36,76 @@ export class BackpackController {
     res.status(500).json({ message: error.message });
   }
 }
+
+  getSolicitudes = async (req, res) => {
+    try {
+      const solicitudes = await this.backpackModel.getSolicitudes()
+      res.json(solicitudes)
+    } catch (error) {
+      res.status(500).json({ message: error.message })
+    }
+  }
+
+  postSolicitud = async (req, res) => {
+    const { nombre, titulo, descripcion } = req.body ?? {}
+    if (![nombre, titulo, descripcion].every(value => typeof value === 'string' && value.trim())) {
+      return res.status(400).json({
+        message: 'nombre, titulo y descripcion son obligatorios y deben ser texto.'
+      })
+    }
+
+    try {
+      const solicitud = await this.backpackModel.postSolicitud({
+        solicitud: { nombre: nombre.trim(), titulo: titulo.trim(), descripcion: descripcion.trim() }
+      })
+      res.status(201).json(solicitud)
+    } catch (error) {
+      res.status(500).json({ message: error.message })
+    }
+  }
+
+  updateSolicitudEstado = async (req, res) => {
+    const { id } = req.params
+    const { estado } = req.body ?? {}
+    const estadosPermitidos = ['pendiente', 'aceptada', 'cancelada']
+
+    if (!estadosPermitidos.includes(estado)) {
+      return res.status(400).json({
+        message: `estado debe ser uno de estos valores: ${estadosPermitidos.join(', ')}.`
+      })
+    }
+
+    try {
+      const solicitud = await this.backpackModel.updateSolicitudEstado({ id, estado })
+      if (!solicitud) return res.status(404).json({ message: 'Solicitud not found' })
+      res.json(solicitud)
+    } catch (error) {
+      res.status(500).json({ message: error.message })
+    }
+  }
   
   getAllUsers = async (req, res) => {
     const users = await this.backpackModel.getAllUsers()
     res.json(users)
   } 
+
+  postUser = async (req, res) => {
+    const { nombre } = req.body ?? {}
+    if (typeof nombre !== 'string' || !nombre.trim()) {
+      return res.status(400).json({
+        message: 'nombre es obligatorio y debe ser texto.'
+      })
+    }
+
+    try {
+      const user = await this.backpackModel.postUser({
+        user: { username: nombre.trim() }
+      })
+      res.status(201).json(user)
+    } catch (error) {
+      res.status(500).json({ message: error.message })
+    }
+  }
 
 
 

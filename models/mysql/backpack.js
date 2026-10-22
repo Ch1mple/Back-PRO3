@@ -41,6 +41,37 @@ export class BackpackModel {
     return rows
   }
 
+  static async getSolicitudes () {
+    const [rows] = await connection.query(
+      'SELECT id, nombre, titulo, descripcion, fecha_solicitud, estado FROM solicitudes ORDER BY id;'
+    )
+    return rows
+  }
+
+  static async postSolicitud ({ solicitud }) {
+    if (!solicitud) throw new Error('Solicitud is required')
+
+    const [result] = await connection.query(
+      'INSERT INTO solicitudes (nombre, titulo, descripcion, fecha_solicitud, estado) VALUES (?, ?, ?, CURRENT_TIMESTAMP, ?);',
+      [solicitud.nombre, solicitud.titulo, solicitud.descripcion, 'pendiente']
+    )
+    const [rows] = await connection.query(
+      'SELECT id, nombre, titulo, descripcion, fecha_solicitud, estado FROM solicitudes WHERE id = ?;',
+      [result.insertId]
+    )
+    return rows[0]
+  }
+
+  static async updateSolicitudEstado ({ id, estado }) {
+    await connection.query('UPDATE solicitudes SET estado = ? WHERE id = ?;', [estado, id])
+
+    const [rows] = await connection.query(
+      'SELECT id, nombre, titulo, descripcion, fecha_solicitud, estado FROM solicitudes WHERE id = ?;',
+      [id]
+    )
+    return rows[0] ?? null
+  }
+
   static async getEventsById ({ id }) {
     const [rows] = await connection.query(
       'SELECT * FROM events WHERE id = ?;',
@@ -73,6 +104,21 @@ export class BackpackModel {
   static async getAllUsers () {
     const [rows] = await connection.query('SELECT * FROM users;')
     return rows
+  }
+
+  static async postUser ({ user }) {
+    if (!user) throw new Error('User is required')
+
+    const user_uid = randomUUID()
+    const [result] = await connection.query(
+      'INSERT INTO users (user_uid, uuid_firebase, username, type) VALUES (?, ?, ?, ?);',
+      [user_uid, user_uid, user.username, 'normal']
+    )
+    const [rows] = await connection.query(
+      'SELECT user_id, user_uid, username, description, type, created_at FROM users WHERE user_id = ?;',
+      [result.insertId]
+    )
+    return rows[0]
   }
 
   static async getUserByUserUid ({ user_uid }) {

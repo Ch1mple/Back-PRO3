@@ -5,8 +5,7 @@
     "username": "Infecar",
     "description": "Ferias y Eventos Gran Canaria",
     "type": "normal",
-    "socialLinks": 
-    {
+    "socialLinks": {
       "instagram": "https://instagram.com/john_shopper",
       "twitter": "https://twitter.com/john_shopper",
       "email": "john.doe@example.com"
@@ -28,8 +27,7 @@
     "username": "Gran Canaria Turismo",
     "description": "Eventos en Gran Canaria #MuchoPorVivir",
     "type": "normal",
-    "socialLinks": 
-    {
+    "socialLinks": {
       "instagram": "https://instagram.com/john_shopper",
       "twitter": "https://twitter.com/john_shopper",
       "email": "john.doe@example.com"
@@ -51,8 +49,7 @@
     "username": "LPA Juventud",
     "description": "Oficina dedel Ayuntamiento de Las Palmas de Gran Canaria",
     "type": "normal",
-    "socialLinks": 
-    {
+    "socialLinks": {
       "instagram": "https://instagram.com/john_shopper",
       "twitter": "https://twitter.com/john_shopper",
       "email": "john.doe@example.com"
@@ -67,5 +64,19 @@
       "country_img": "https://flagsapi.com/US/shiny/64.png"
     },
     "created_at": "2025-02-18T10:00:00Z"
+  },
+  {
+    "user_id": 7,
+    "user_uid": "a9e09e42-0117-462b-84d5-1c77ecdb721c",
+    "username": "Juegame",
+    "type": "normal",
+    "created_at": "2026-10-22T15:06:38.358Z"
+  },
+  {
+    "user_id": 8,
+    "user_uid": "883b60dd-7724-4026-8587-5eef7fcd9104",
+    "username": "cuentaprueba",
+    "type": "cancelada",
+    "created_at": "2026-10-22T15:06:47.071Z"
   }
 ]

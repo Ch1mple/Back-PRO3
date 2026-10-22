@@ -34,3 +34,32 @@ Content-Type: application/json
 {
   "year": 2022
 }
+
+### Obtener todas las solicitudes
+GET http://localhost:1234/backpack/solicitudes
+
+### Crear una solicitud
+POST http://localhost:1234/backpack/solicitudes
+Content-Type: application/json
+
+{
+  "nombre": "Jane Doe",
+  "titulo": "Cuenta personal",
+  "descripcion": "Solicitud para crear una cuenta personal."
+}
+
+### Actualizar el estado de una solicitud
+PATCH http://localhost:1234/backpack/solicitudes/1/estado
+Content-Type: application/json
+
+{
+  "estado": "aceptada"
+}
+
+### Crear un usuario
+POST http://localhost:1234/backpack/users
+Content-Type: application/json
+
+{
+  "nombre": "Nuevo usuario"
+}

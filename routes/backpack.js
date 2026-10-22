@@ -8,6 +8,7 @@ export const createBackpackRouter = ({ backpackModel, userModel }) => {
   const backpackController = new BackpackController({ backpackModel, userModel })
 
   backpackRouter.get('/users', backpackController.getAllUsers)
+  backpackRouter.post('/users', backpackController.postUser)
   backpackRouter.get('/users/:user_uid', backpackController.getUserByUserUid) // Nueva ruta para obtener usuario por user_uid
   backpackRouter.get('/events', backpackController.getEvents);
   backpackRouter.post('/event', backpackController.postEvent);
@@ -15,6 +16,9 @@ export const createBackpackRouter = ({ backpackModel, userModel }) => {
   backpackRouter.get('/events/:user_uid', backpackController.getEventsByUserUid)
   backpackRouter.get('/events/id/:id', backpackController.getEventsById)
   backpackRouter.get('/events/search/:title', backpackController.getSearchEventByTitle)
+  backpackRouter.get('/solicitudes', backpackController.getSolicitudes)
+  backpackRouter.post('/solicitudes', backpackController.postSolicitud)
+  backpackRouter.patch('/solicitudes/:id/estado', backpackController.updateSolicitudEstado)
 
   backpackRouter.get('/user_links/:user_uid', backpackController.getUserLinksByUserUid)
   backpackRouter.get('/user_links/id/:id', backpackController.getUserLinksById)

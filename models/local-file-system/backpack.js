@@ -13,6 +13,7 @@ const users = readJSON('./users.json')
 const events = readJSON('./events.json')
 const user_links = readJSON('./user_links.json')
 const users_events = readJSON('./user_events.json')
+const solicitudes = readJSON('./solicitudes.json')
 
 export class BackpackModel {
 
@@ -40,6 +41,41 @@ export class BackpackModel {
     return events
   }
 
+  static async getSolicitudes () {
+    return solicitudes
+  }
+
+  static async postSolicitud ({ solicitud }) {
+    if (!solicitud) throw new Error('Solicitud is required')
+
+    const numericIds = solicitudes
+      .map(({ id }) => Number(id))
+      .filter(Number.isInteger)
+    const newSolicitud = {
+      id: numericIds.length ? Math.max(...numericIds) + 1 : 1,
+      ...solicitud,
+      fecha_solicitud: new Date().toISOString(),
+      estado: 'pendiente'
+    }
+
+    solicitudes.push(newSolicitud)
+    const solicitudesPath = path.join(__dirname, '../../solicitudes.json')
+    fs.writeFileSync(solicitudesPath, JSON.stringify(solicitudes, null, 2), 'utf-8')
+
+    return newSolicitud
+  }
+
+  static async updateSolicitudEstado ({ id, estado }) {
+    const solicitud = solicitudes.find(solicitud => String(solicitud.id) === id)
+    if (!solicitud) return null
+
+    solicitud.estado = estado
+    const solicitudesPath = path.join(__dirname, '../../solicitudes.json')
+    fs.writeFileSync(solicitudesPath, JSON.stringify(solicitudes, null, 2), 'utf-8')
+
+    return solicitud
+  }
+
   static async getEventsById ({ id }) {
     const event = events.find(event => event.id === id)
     return event || null
@@ -64,6 +100,27 @@ export class BackpackModel {
 
   static async getAllUsers () {
     return users
+  }
+
+  static async postUser ({ user }) {
+    if (!user) throw new Error('User is required')
+
+    const numericIds = users
+      .map(({ user_id }) => Number(user_id))
+      .filter(Number.isInteger)
+    const newUser = {
+      user_id: numericIds.length ? Math.max(...numericIds) + 1 : 1,
+      user_uid: randomUUID(),
+      ...user,
+      type: 'normal',
+      created_at: new Date().toISOString()
+    }
+
+    users.push(newUser)
+    const usersPath = path.join(__dirname, '../../users.json')
+    fs.writeFileSync(usersPath, JSON.stringify(users, null, 2), 'utf-8')
+
+    return newUser
   }
 
   static async getUserByUserUid ({ user_uid }) {
@@ -104,5 +161,3 @@ export class BackpackModel {
 
 
 }
-
-
