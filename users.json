@@ -78,5 +78,12 @@
     "username": "cuentaprueba",
     "type": "cancelada",
     "created_at": "2026-10-22T15:06:47.071Z"
+  },
+  {
+    "user_id": 9,
+    "user_uid": "f515b08e-6510-41e3-b39a-73fc1c232b43",
+    "username": "bbbbb",
+    "type": "normal",
+    "created_at": "2026-10-22T17:12:59.184Z"
   }
 ]

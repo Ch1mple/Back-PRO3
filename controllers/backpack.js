@@ -47,16 +47,20 @@ export class BackpackController {
   }
 
   postSolicitud = async (req, res) => {
-    const { nombre, titulo, descripcion } = req.body ?? {}
-    if (![nombre, titulo, descripcion].every(value => typeof value === 'string' && value.trim())) {
+    const { nombre, descripcion, contacto } = req.body ?? {}
+    if (![nombre, descripcion, contacto].every(value => typeof value === 'string' && value.trim())) {
       return res.status(400).json({
-        message: 'nombre, titulo y descripcion son obligatorios y deben ser texto.'
+        message: 'nombre, descripcion y contacto son obligatorios y deben ser texto.'
       })
     }
 
     try {
       const solicitud = await this.backpackModel.postSolicitud({
-        solicitud: { nombre: nombre.trim(), titulo: titulo.trim(), descripcion: descripcion.trim() }
+        solicitud: {
+          nombre: nombre.trim(),
+          descripcion: descripcion.trim(),
+          contacto: contacto.trim()
+        }
       })
       res.status(201).json(solicitud)
     } catch (error) {

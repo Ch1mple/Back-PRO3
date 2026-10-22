@@ -43,7 +43,7 @@ export class BackpackModel {
 
   static async getSolicitudes () {
     const [rows] = await connection.query(
-      'SELECT id, nombre, titulo, descripcion, fecha_solicitud, estado FROM solicitudes ORDER BY id;'
+      'SELECT id, nombre, titulo, descripcion, fecha_solicitud, estado, contacto FROM solicitudes ORDER BY id;'
     )
     return rows
   }
@@ -52,11 +52,11 @@ export class BackpackModel {
     if (!solicitud) throw new Error('Solicitud is required')
 
     const [result] = await connection.query(
-      'INSERT INTO solicitudes (nombre, titulo, descripcion, fecha_solicitud, estado) VALUES (?, ?, ?, CURRENT_TIMESTAMP, ?);',
-      [solicitud.nombre, solicitud.titulo, solicitud.descripcion, 'pendiente']
+      'INSERT INTO solicitudes (nombre, descripcion, contacto, fecha_solicitud, estado) VALUES (?, ?, ?, CURRENT_TIMESTAMP, ?);',
+      [solicitud.nombre, solicitud.descripcion, solicitud.contacto, 'pendiente']
     )
     const [rows] = await connection.query(
-      'SELECT id, nombre, titulo, descripcion, fecha_solicitud, estado FROM solicitudes WHERE id = ?;',
+      'SELECT id, nombre, titulo, descripcion, fecha_solicitud, estado, contacto FROM solicitudes WHERE id = ?;',
       [result.insertId]
     )
     return rows[0]
@@ -66,7 +66,7 @@ export class BackpackModel {
     await connection.query('UPDATE solicitudes SET estado = ? WHERE id = ?;', [estado, id])
 
     const [rows] = await connection.query(
-      'SELECT id, nombre, titulo, descripcion, fecha_solicitud, estado FROM solicitudes WHERE id = ?;',
+      'SELECT id, nombre, titulo, descripcion, fecha_solicitud, estado, contacto FROM solicitudes WHERE id = ?;',
       [id]
     )
     return rows[0] ?? null

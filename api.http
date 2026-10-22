@@ -44,8 +44,8 @@ Content-Type: application/json
 
 {
   "nombre": "Jane Doe",
-  "titulo": "Cuenta personal",
-  "descripcion": "Solicitud para crear una cuenta personal."
+  "descripcion": "Solicitud para crear una cuenta personal.",
+  "contacto": "jane.doe@example.com"
 }
 
 ### Actualizar el estado de una solicitud

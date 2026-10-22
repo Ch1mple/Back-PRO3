@@ -47,10 +47,11 @@ CREATE TABLE trades (
 CREATE TABLE solicitudes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
-    titulo VARCHAR(255) NOT NULL,
+    titulo VARCHAR(255),
     descripcion TEXT NOT NULL,
     fecha_solicitud TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    estado ENUM('pendiente', 'aceptada', 'cancelada') NOT NULL DEFAULT 'pendiente'
+    estado ENUM('pendiente', 'aceptada', 'cancelada') NOT NULL DEFAULT 'pendiente',
+    contacto VARCHAR(255)
 );
 
 -- Insert statements for the users table
